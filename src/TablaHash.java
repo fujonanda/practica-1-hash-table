@@ -55,4 +55,18 @@ public class TablaHash<V> {
         numElementos++;
         System.out.println("Llave " + key + " insertada en el índice " + indice);
     }
+
+    public V buscar(int key) {
+        int indice = hash(key);
+        Nodo<V> actual = tabla[indice];
+        while (actual != null) {
+            if (actual.key == key) {
+                System.out.println(key + " -> " + actual.value);
+                return actual.value;
+            }
+            actual = actual.siguiente;
+        }
+        System.out.println(key + " -> NOT_FOUND");
+        return null;
+    }
 }

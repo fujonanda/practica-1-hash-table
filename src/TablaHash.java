@@ -69,4 +69,25 @@ public class TablaHash<V> {
         System.out.println(key + " -> NOT_FOUND");
         return null;
     }
+
+    public void eliminar(int key) {
+        int indice = hash(key);
+        Nodo<V> actual = tabla[indice];
+        Nodo<V> previo = null;
+        while (actual != null) {
+            if (actual.key == key) {
+                if (previo == null) {
+                    tabla[indice] = actual.siguiente;
+                } else {
+                    previo.siguiente = actual.siguiente;
+                }
+                numElementos--;
+                System.out.println("Se eliminó la llave " + key);
+                return;
+            }
+            previo = actual;
+            actual = actual.siguiente;
+        }
+        System.out.println("No se encontró ninguna llave " + key + " para eliminar");
+    }
 }

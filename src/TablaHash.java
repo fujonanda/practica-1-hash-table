@@ -90,4 +90,24 @@ public class TablaHash<V> {
         }
         System.out.println("No se encontró ninguna llave " + key + " para eliminar");
     }
+
+    public void imprimirTabla() {
+        System.out.println("--------------------------------------");
+        for (int i = 0; i < 7; i++) {
+            System.out.print(i + " -> ");
+            Nodo<V> actual = tabla[i];
+            if (actual == null) {
+                System.out.print("");
+            }
+            while (actual != null) {
+                System.out.print("(" + actual.key + ", " + actual.value + ")");
+                if (actual.siguiente != null) {
+                    System.out.print(" -> ");
+                }
+                actual = actual.siguiente;
+            }
+            System.out.println();
+        }
+        System.out.println("--------------------------------------");
+    }
 }
